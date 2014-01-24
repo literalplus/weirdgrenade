@@ -11,3 +11,7 @@ Get the latest build at my Continous Integration server: http://server.nowak-at.
 License
 =======
 You can use the source and binaries as long as you credit me and do not make any money from it, directly or indirectly. 
+
+Support
+=======
+[http:/irc.spi.gt/iris/?channels=lit(Join #lit on irc.spi.gt anpatiently wait for a reply.)
