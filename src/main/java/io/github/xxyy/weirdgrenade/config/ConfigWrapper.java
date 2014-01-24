@@ -15,6 +15,7 @@ public final class ConfigWrapper {
     public ConfigWrapper(final WeirdGrenadePlugin parent) {
         ConfigNode.setPlugin(parent);
         initConfig(parent.getConfig());
+        parent.saveConfig();
         this.plugin = parent;
     }
 
