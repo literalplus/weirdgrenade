@@ -6,7 +6,7 @@ A weird plugin which allows players to craft weird grenades an throw them (creat
 Downloading
 ===========
 
-Get the latest build at my Continous Integration server: http://server.nowak-at.net/jenkins/job/public~weirdgrenade/
+[Get the latest build at my Continous Integration server](http://server.nowak-at.net/jenkins/job/public~weirdgrenade/)
 
 License
 =======
