@@ -6,7 +6,9 @@ import io.github.xxyy.weirdgrenade.util.Util;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.CraftingInventory;
 
 /**
  * Listens for crafting events and decides if a weird grenade should be crafted.
@@ -23,12 +25,19 @@ public final class CraftingHandler implements Listener {
 
 
     @EventHandler
-    public void onCraft(final CraftItemEvent evt) {
+    public void onCraft(final InventoryClickEvent evt) {
+        if(evt.getSlotType() != InventoryType.SlotType.CRAFTING ||
+                evt.getInventory().getType() != InventoryType.CRAFTING){
+            return;
+        }
+
+        CraftingInventory craftingInventory = (CraftingInventory) evt.getInventory();
+
         if (Util.craftingMatrixHasShaped(
-                evt.getInventory().getMatrix(),
+                craftingInventory.getMatrix(),
                 (Material[]) ConfigNode.CRAFTING_RECIPE_SHAPE.getValue()
         )) { //Player is trying to craft a weird grenade
-            evt.getInventory().setResult(Util.getWeirdGrenadeStack());
+            craftingInventory.setResult(Util.getWeirdGrenadeStack());
         }
     }
 }
