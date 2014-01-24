@@ -6,7 +6,6 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +52,7 @@ public final class Util {
         return true;
     }
 
-    public static ItemStack getWeirdGrenadeStack(final Plugin plugin) {
+    public static ItemStack getWeirdGrenadeStack() {
         ItemStack stk = new ItemStack(
                 ConfigNode.CRAFTING_OUTCOME_MATERIAL.<Material>getValue(),
                 ConfigNode.CRAFTING_OUTCOME_AMOUNT.<Integer>getValue(),

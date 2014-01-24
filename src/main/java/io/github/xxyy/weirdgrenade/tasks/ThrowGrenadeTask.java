@@ -22,7 +22,7 @@ public class ThrowGrenadeTask implements Runnable {
         this.location = location;
         
         //spawn fake potion to indicate throwing
-        Item item = this.location.getWorld().dropItem(location, Util.getWeirdGrenadeStack(plugin));
+        Item item = this.location.getWorld().dropItem(location, Util.getWeirdGrenadeStack());
         item.setPickupDelay(Integer.MAX_VALUE);
         item.setVelocity(new Vector(0, 12, 0)); //It will get destroyed by the explosion. Hopefully.
     }

@@ -28,7 +28,7 @@ public final class CraftingHandler implements Listener {
                 evt.getInventory().getMatrix(),
                 (Material[]) ConfigNode.CRAFTING_RECIPE_SHAPE.getValue()
         )) { //Player is trying to craft a weird grenade
-            evt.getInventory().setResult(Util.getWeirdGrenadeStack(plugin));
+            evt.getInventory().setResult(Util.getWeirdGrenadeStack());
         }
     }
 }
