@@ -14,4 +14,4 @@ You can use the source and binaries as long as you credit me and do not make any
 
 Support
 =======
-[http:/irc.spi.gt/iris/?channels=lit(Join #lit on irc.spi.gt anpatiently wait for a reply.)
+[Join #lit on irc.spi.gt patiently wait for a reply.](http:/irc.spi.gt/iris/?channels=lit)
