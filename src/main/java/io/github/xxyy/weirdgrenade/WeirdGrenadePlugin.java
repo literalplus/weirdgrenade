@@ -18,7 +18,9 @@ public class WeirdGrenadePlugin extends JavaPlugin {
     public void onEnable() {
 
         if (getServer().getPluginManager().getPlugin("ItemRenamer") == null) {
-            getLogger().warning("ItemRenamer not found. To allow some fancy stuff, please drop it into your plugins folder. Get it at http://dev.bukkit.org/bukkit-plugins/itemrenamer/");
+            getLogger().warning("ItemRenamer not found. To allow some fancy stuff, please drop it into your plugins folder." +
+                    " Get it at http://dev.bukkit.org/bukkit-plugins/itemrenamer/");
+            getLogger().severe("There WILL be weird texts on grenades. These will disappear if you install it.");
         } else {
             try {
                 Util.hookItemRenamer(this);

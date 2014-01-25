@@ -22,7 +22,7 @@ import java.util.Map;
  */
 public final class Util {
 
-    public static final String LORE_GRENADE_MARKER = "~~LORE_GRENADE_MARKER~~";
+    public static final String LORE_GRENADE_MARKER = "~~INSTALL_ITEMRENAMER_PLEASE~~";
 
     private Util() {
     }
