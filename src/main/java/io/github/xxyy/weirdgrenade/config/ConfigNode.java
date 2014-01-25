@@ -17,7 +17,7 @@ public enum ConfigNode {
 
     CRAFTING_OUTCOME_AMOUNT("crafting.outcome.amount", 2),
     CRAFTING_OUTCOME_DAMAGE("crafting.outcome.damage", 16_387),
-    CRAFTING_OUTCOME_MATERIAL("crafting.outcome.material", Material.POTION),
+    CRAFTING_OUTCOME_MATERIAL("crafting.outcome.material", Material.POTION.name()),
 
     CRAFTING_OUTCOME_NAME("crafting.outcome.name", "&f&lWeird Grenade"),
     CRAFTING_OUTCOME_LORE("crafting.outcome.lore", Lists.newArrayList(
@@ -31,8 +31,8 @@ public enum ConfigNode {
         protected void registerDefault(FileConfiguration cfg) {
             ConfigurationSection configurationSection = cfg.getConfigurationSection(this.getPath());
             if(configurationSection == null){
-                cfg.addDefault(this.getPath()+".C", Material.CLAY_BALL);
-                cfg.addDefault(this.getPath()+".P", Material.POTION);
+                cfg.addDefault(this.getPath()+".C", Material.CLAY_BALL.name());
+                cfg.addDefault(this.getPath()+".P", Material.POTION.name());
             }
         }
     },

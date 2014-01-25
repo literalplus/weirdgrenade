@@ -2,6 +2,7 @@ package io.github.xxyy.weirdgrenade.util;
 
 import io.github.xxyy.weirdgrenade.config.ConfigNode;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.Validate;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -63,18 +64,23 @@ public final class Util {
                         .getConfigurationSection(ConfigNode.CRAFTING_RECIPE_TYPES.getPath())
                         .getValues(false).entrySet()) {
 
-            if (!(entry.getValue() instanceof Material)) {
-                throw new IllegalStateException("One of your recipe types is not castable to org.bukkit.Material!");
+            Material material = Material.matchMaterial(entry.getValue().toString());
+
+            if (!(material == null)) {
+                throw new IllegalStateException("One of your recipe types is not a valid Material: " + entry.getValue());
             }
-            recipe.setIngredient(entry.getKey().charAt(0), (Material) entry.getValue());
+            recipe.setIngredient(entry.getKey().charAt(0), material);
         }
 
         return server.addRecipe(recipe);
     }
 
     private static ItemStack getWeirdGrenadeStack() {
+        final Material material = Material.matchMaterial(ConfigNode.CRAFTING_OUTCOME_MATERIAL.<String>getValue());
+        Validate.notNull(material, "Illegal grenade Material name defined in your config!");
+
         ItemStack stk = new ItemStack(
-                ConfigNode.CRAFTING_OUTCOME_MATERIAL.<Material>getValue(),
+                material,
                 ConfigNode.CRAFTING_OUTCOME_AMOUNT.<Integer>getValue(),
                 ConfigNode.CRAFTING_OUTCOME_DAMAGE.<Integer>getValue().shortValue());
 
