@@ -15,6 +15,7 @@ import org.bukkit.inventory.CraftingInventory;
  *
  * @author <a href="http://xxyy.github.io/">xxyy98</a>
  */
+@Deprecated
 public final class CraftingHandler implements Listener {
 
     private final WeirdGrenadePlugin plugin;

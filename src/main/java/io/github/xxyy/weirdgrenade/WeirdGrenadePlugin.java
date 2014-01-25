@@ -3,6 +3,7 @@ package io.github.xxyy.weirdgrenade;
 import io.github.xxyy.weirdgrenade.config.ConfigWrapper;
 import io.github.xxyy.weirdgrenade.listeners.CraftingHandler;
 import io.github.xxyy.weirdgrenade.listeners.GrenadeHandler;
+import io.github.xxyy.weirdgrenade.util.Util;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -19,6 +20,7 @@ public class WeirdGrenadePlugin extends JavaPlugin {
         //REGISTER STUFF
         getServer().getPluginManager().registerEvents(new CraftingHandler(this), this);
         getServer().getPluginManager().registerEvents(new GrenadeHandler(this), this);
+        Util.registerRecipes(getServer());
     }
 
     public ConfigWrapper getConfigWrapper() {
