@@ -65,10 +65,8 @@ public final class Util {
                         .getValues(false).entrySet()) {
 
             Material material = Material.matchMaterial(entry.getValue().toString());
+            Validate.notNull(material, "One of your recipe types is not a valid Material: " + entry.getValue());
 
-            if (!(material == null)) {
-                throw new IllegalStateException("One of your recipe types is not a valid Material: " + entry.getValue());
-            }
             recipe.setIngredient(entry.getKey().charAt(0), material);
         }
 
