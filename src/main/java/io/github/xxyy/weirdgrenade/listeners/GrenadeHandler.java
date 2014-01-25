@@ -1,8 +1,8 @@
 package io.github.xxyy.weirdgrenade.listeners;
 
 import io.github.xxyy.weirdgrenade.WeirdGrenadePlugin;
-import io.github.xxyy.weirdgrenade.config.ConfigNode;
 import io.github.xxyy.weirdgrenade.tasks.ThrowGrenadeTask;
+import io.github.xxyy.weirdgrenade.util.Util;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -26,10 +26,9 @@ public final class GrenadeHandler implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onInteract(final PlayerInteractEvent evt) {
         if (evt.getAction() == Action.RIGHT_CLICK_BLOCK &&
-                evt.getItem().getType() == ConfigNode.CRAFTING_OUTCOME_MATERIAL.getValue() &&
-                evt.getItem().getDurability() == ConfigNode.CRAFTING_OUTCOME_DAMAGE.<Integer>getValue().shortValue()) {
+                Util.isWeirdGrenade(evt.getItem())) {
 
-            plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
+            plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() { //See JavaDoc
                 @Override
                 public void run() {
                     ItemStack itemInHand = evt.getPlayer().getInventory().getItemInHand();
@@ -44,6 +43,7 @@ public final class GrenadeHandler implements Listener {
                     ThrowGrenadeTask.runNewTask(plugin, evt.getPlayer().getLocation());
                 }
             }, 1L);
+
         }
     }
 }

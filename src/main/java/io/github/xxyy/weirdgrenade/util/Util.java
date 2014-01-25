@@ -20,6 +20,8 @@ import java.util.Map;
  */
 public final class Util {
 
+    public static final String LORE_GRENADE_MARKER = "~~LORE_GRENADE_MARKER~~";
+
     private Util() {
     }
 
@@ -40,18 +42,15 @@ public final class Util {
         return newList;
     }
 
-    @Deprecated
-    public static boolean craftingMatrixHasShaped(final ItemStack[] matrix, final Material... materials) {
-        int i = 0;
-        for (Material mat : materials) {
-            if ((matrix[i] == null && mat != null) //If mat is null and provided is also null, ignore
-                    || !matrix[i].getType().equals(mat)) {
-                return false;
+    public static boolean isWeirdGrenade(final ItemStack itemStack){
+        if(itemStack != null && itemStack.hasItemMeta()){
+            ItemMeta itemMeta = itemStack.getItemMeta();
+            if(itemMeta.hasLore()){
+                return itemMeta.getLore().contains(Util.LORE_GRENADE_MARKER);
             }
-            i++;
         }
 
-        return true;
+        return false;
     }
 
     public static boolean registerRecipes(final Server server){
@@ -72,8 +71,7 @@ public final class Util {
         return server.addRecipe(recipe);
     }
 
-    //TODO make private
-    public static ItemStack getWeirdGrenadeStack() {
+    private static ItemStack getWeirdGrenadeStack() {
         ItemStack stk = new ItemStack(
                 ConfigNode.CRAFTING_OUTCOME_MATERIAL.<Material>getValue(),
                 ConfigNode.CRAFTING_OUTCOME_AMOUNT.<Integer>getValue(),
@@ -81,7 +79,9 @@ public final class Util {
 
         ItemMeta itemMeta = stk.getItemMeta();
         itemMeta.setDisplayName(applyCodes(ConfigNode.CRAFTING_OUTCOME_NAME.<String>getValue()));
-        itemMeta.setLore(applyCodesList(ConfigNode.CRAFTING_OUTCOME_LORE.<List<String>>getListValue()));
+        List<String> lore = applyCodesList(ConfigNode.CRAFTING_OUTCOME_LORE.<List<String>>getListValue());
+        lore.add(LORE_GRENADE_MARKER);
+        itemMeta.setLore(lore);
         stk.setItemMeta(itemMeta);
 
         return stk;
