@@ -26,7 +26,7 @@ public final class GrenadeHandler implements Listener {
     public void onInteract(final PlayerInteractEvent evt) {
         if (evt.getAction() == Action.RIGHT_CLICK_BLOCK &&
                 evt.getItem().getType() == ConfigNode.CRAFTING_OUTCOME_MATERIAL.getValue() &&
-                evt.getItem().getDurability() == (short) ConfigNode.CRAFTING_OUTCOME_DAMAGE.getValue()) {
+                evt.getItem().getDurability() == ConfigNode.CRAFTING_OUTCOME_DAMAGE.<Integer>getValue().shortValue()) {
             evt.getPlayer().getInventory().getItemInHand().setAmount(evt.getItem().getAmount() - 1);
             ThrowGrenadeTask.runNewTask(plugin, evt.getPlayer().getLocation());
         }
