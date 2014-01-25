@@ -23,7 +23,7 @@ public enum ConfigNode {
     CRAFTING_OUTCOME_LORE("crafting.outcome.lore", Lists.newArrayList(
             "&7It is so weird, ",
             "&7if you throw it at the floor, it explodes.",
-            "&3You can even use" +
+            "&3You can even use",
             "&3special characters in this description:",
             "&3&auml; &szlig; &euro; &8&o(Use HTML escapes)")),
 
