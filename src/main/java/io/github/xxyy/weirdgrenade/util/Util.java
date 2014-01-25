@@ -77,7 +77,7 @@ public final class Util {
         ItemStack stk = new ItemStack(
                 ConfigNode.CRAFTING_OUTCOME_MATERIAL.<Material>getValue(),
                 ConfigNode.CRAFTING_OUTCOME_AMOUNT.<Integer>getValue(),
-                ConfigNode.CRAFTING_OUTCOME_DAMAGE.<Short>getValue());
+                ConfigNode.CRAFTING_OUTCOME_DAMAGE.<Integer>getValue().shortValue());
 
         ItemMeta itemMeta = stk.getItemMeta();
         itemMeta.setDisplayName(applyCodes(ConfigNode.CRAFTING_OUTCOME_NAME.<String>getValue()));
