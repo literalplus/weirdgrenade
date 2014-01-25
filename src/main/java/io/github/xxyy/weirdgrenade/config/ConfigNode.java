@@ -1,5 +1,6 @@
 package io.github.xxyy.weirdgrenade.config;
 
+import com.google.common.collect.Lists;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,9 +20,9 @@ public enum ConfigNode {
     CRAFTING_OUTCOME_MATERIAL("crafting.outcome.material", Material.POTION),
 
     CRAFTING_OUTCOME_NAME("crafting.outcome.name", "&f&lWeird Grenade"),
-    CRAFTING_OUTCOME_LORE("crafting.outcome.lore", new String[]{
+    CRAFTING_OUTCOME_LORE("crafting.outcome.lore", Lists.newArrayList(
             "&7It is so weird, if you throw it at the floor, it explodes.",
-            "&3You can even use special characters in this description: &auml; &szlig; &euro; &8&o(Use HTML escapes)"}),
+            "&3You can even use special characters in this description: &auml; &szlig; &euro; &8&o(Use HTML escapes)")),
 
     @Deprecated
     CRAFTING_RECIPE_SHAPE("crafting.recipe.__DEPRECATED__shape__", new Material[]{
@@ -80,7 +81,7 @@ public enum ConfigNode {
 
     public <T extends List> T getListValue() {
         checkHasPlugin();
-        return (T) plugin.getConfig().getList(path, (List<?>) def);
+        return (T) plugin.getConfig().getList(path, (List<?>)def);
     }
 
     public static void setPlugin(final Plugin plugin) {
