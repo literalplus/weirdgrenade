@@ -27,7 +27,7 @@ public class ThrowGrenadeTask implements Runnable {
     public void run() {
         location.getWorld().createExplosion(location,
                 ConfigNode.THROW_EXPLOSION_STRENGTH.<Double>getValue().floatValue(),
-                Boolean.valueOf(ConfigNode.THROW_EXPLOSION_FIRE.<String>getValue()));
+                ConfigNode.THROW_EXPLOSION_FIRE.getBooleanValue());
     }
 
     public static void runNewTask(final WeirdGrenadePlugin plugin, final Location location){

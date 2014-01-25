@@ -80,6 +80,19 @@ public enum ConfigNode {
         return (T) plugin.getConfig().getList(path, (List<?>)def);
     }
 
+    public String getStringValue(){
+        checkHasPlugin();
+        return plugin.getConfig().getString(path, def.toString());
+    }
+
+    public Boolean getBooleanValue(){
+        checkHasPlugin();
+        return plugin.getConfig().getBoolean(path,
+                (def instanceof Boolean ? //this works: http://ideone.com/xfOK3g
+                        (Boolean) def
+                        : Boolean.valueOf(def.toString())));
+    }
+
     public static void setPlugin(final Plugin plugin) {
         ConfigNode.plugin = plugin;
     }
