@@ -43,7 +43,7 @@ public enum ConfigNode {
         }
     },
 
-    THROW_DELAY("throw.delay_in_ticks", 60L), //3 seconds
+    THROW_DELAY("throw.delay_in_ticks", 30L), //1.5 seconds
     THROW_EXPLOSION_STRENGTH("throw.explosion.strength", 3.0F),
     THROW_EXPLOSION_FIRE("throw.explosion.fire", true)
     ;

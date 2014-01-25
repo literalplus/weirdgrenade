@@ -2,11 +2,10 @@ package io.github.xxyy.weirdgrenade.tasks;
 
 import io.github.xxyy.weirdgrenade.WeirdGrenadePlugin;
 import io.github.xxyy.weirdgrenade.config.ConfigNode;
-import io.github.xxyy.weirdgrenade.util.Util;
+import org.bukkit.Effect;
 import org.bukkit.Location;
-import org.bukkit.entity.Item;
+import org.bukkit.block.BlockFace;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.util.Vector;
 
 /**
  * Represents a task that fires a grenade after a specific amount of time (defined in config)
@@ -21,10 +20,7 @@ public class ThrowGrenadeTask implements Runnable {
     private ThrowGrenadeTask(final Location location, final Plugin plugin){
         this.location = location;
         
-        //spawn fake potion to indicate throwing
-        Item item = this.location.getWorld().dropItem(location, Util.getWeirdGrenadeStack());
-        item.setPickupDelay(Integer.MAX_VALUE);
-        item.setVelocity(new Vector(0, 12, 0)); //It will get destroyed by the explosion. Hopefully.
+        this.location.getWorld().playEffect(this.location.add(0,1,0), Effect.SMOKE, BlockFace.UP);
     }
 
     @Override
