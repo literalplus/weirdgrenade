@@ -3,6 +3,7 @@ package io.github.xxyy.weirdgrenade.listeners;
 import io.github.xxyy.weirdgrenade.WeirdGrenadePlugin;
 import io.github.xxyy.weirdgrenade.tasks.ThrowGrenadeTask;
 import io.github.xxyy.weirdgrenade.util.Util;
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -31,14 +32,16 @@ public final class GrenadeHandler implements Listener {
             plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() { //See JavaDoc
                 @Override
                 public void run() {
-                    ItemStack itemInHand = evt.getPlayer().getInventory().getItemInHand();
-                    if (itemInHand != null && itemInHand.getAmount() > 1) {
-                        itemInHand.setAmount(evt.getItem().getAmount() - 1);
-                    }else{
-                        itemInHand = null;
-                    }
+                    if (evt.getPlayer().getGameMode() != GameMode.CREATIVE) {
+                        ItemStack itemInHand = evt.getPlayer().getInventory().getItemInHand();
+                        if (itemInHand != null && itemInHand.getAmount() > 1) {
+                            itemInHand.setAmount(evt.getItem().getAmount() - 1);
+                        } else {
+                            itemInHand = null;
+                        }
 
-                    evt.getPlayer().setItemInHand(itemInHand);
+                        evt.getPlayer().setItemInHand(itemInHand);
+                    }
 
                     ThrowGrenadeTask.runNewTask(plugin, evt.getPlayer().getLocation());
                 }
