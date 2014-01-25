@@ -31,6 +31,6 @@ public class ThrowGrenadeTask implements Runnable {
     }
 
     public static void runNewTask(final WeirdGrenadePlugin plugin, final Location location){
-        plugin.getServer().getScheduler().runTaskLater(plugin, new ThrowGrenadeTask(location, plugin), (long) ConfigNode.THROW_DELAY.getValue());
+        plugin.getServer().getScheduler().runTaskLater(plugin, new ThrowGrenadeTask(location, plugin), ConfigNode.THROW_DELAY.<Integer>getValue().longValue());
     }
 }
