@@ -8,6 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,10 +43,10 @@ public final class Util {
         return newList;
     }
 
-    public static boolean isWeirdGrenade(final ItemStack itemStack){
-        if(itemStack != null && itemStack.hasItemMeta()){
+    public static boolean isWeirdGrenade(final ItemStack itemStack) {
+        if (itemStack != null && itemStack.hasItemMeta()) {
             ItemMeta itemMeta = itemStack.getItemMeta();
-            if(itemMeta.hasLore()){
+            if (itemMeta.hasLore()) {
                 return itemMeta.getLore().contains(Util.LORE_GRENADE_MARKER);
             }
         }
@@ -53,16 +54,16 @@ public final class Util {
         return false;
     }
 
-    public static boolean registerRecipes(final Server server){
+    public static boolean registerRecipes(final Server server) {
         ShapedRecipe recipe = new ShapedRecipe(getWeirdGrenadeStack())
                 .shape(ConfigNode.CRAFTING_RECIPE_LINES.getValue().toString().split("\\|"));
 
-        for(Map.Entry<String, Object> entry :
+        for (Map.Entry<String, Object> entry :
                 ConfigNode.getPlugin().getConfig()
                         .getConfigurationSection(ConfigNode.CRAFTING_RECIPE_TYPES.getPath())
-                        .getValues(false).entrySet()){
+                        .getValues(false).entrySet()) {
 
-            if(!(entry.getValue() instanceof Material)){
+            if (!(entry.getValue() instanceof Material)) {
                 throw new IllegalStateException("One of your recipe types is not castable to org.bukkit.Material!");
             }
             recipe.setIngredient(entry.getKey().charAt(0), (Material) entry.getValue());
@@ -85,5 +86,13 @@ public final class Util {
         stk.setItemMeta(itemMeta);
 
         return stk;
+    }
+
+    public static void hookItemRenamer(final Plugin plugin) throws Exception, Error {
+        org.shininet.bukkit.itemrenamer.api.RenamerAPI.getAPI()
+                .addListener(plugin,
+                        org.shininet.bukkit.itemrenamer.api.RenamerPriority.PRE_NORMAL,
+                        (org.shininet.bukkit.itemrenamer.api.ItemsListener) Class.forName("io.github.xxyy.weirdgrenade.listeners.ItemLoreListener")
+                                .getConstructor().newInstance());
     }
 }

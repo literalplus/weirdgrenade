@@ -22,14 +22,8 @@ public enum ConfigNode {
     CRAFTING_OUTCOME_NAME("crafting.outcome.name", "&f&lWeird Grenade"),
     CRAFTING_OUTCOME_LORE("crafting.outcome.lore", Lists.newArrayList(
             "&7It is so weird, if you throw it at the floor, it explodes.",
-            "&3You can even use special characters in this description: &auml; &szlig; &euro; &8&o(Use HTML escapes)")),
-
-    @Deprecated
-    CRAFTING_RECIPE_SHAPE("crafting.recipe.__DEPRECATED__shape__", new Material[]{
-            Material.CLAY_BALL, Material.CLAY_BALL, Material.CLAY_BALL,
-            null, Material.POTION, null,
-            null, null, null
-    }),
+            "&3You can even use special characters in this description:",
+            "&3&auml; &szlig; &euro; &8&o(Use HTML escapes)")),
 
     CRAFTING_RECIPE_LINES("crafting.recipe.lines", "CCC| P |   "),
     CRAFTING_RECIPE_TYPES("crafting.recipe.items", null){
