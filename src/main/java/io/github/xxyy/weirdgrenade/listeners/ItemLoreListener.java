@@ -23,7 +23,6 @@ public class ItemLoreListener implements ItemsListener {
         for(ItemStack itemStack : itemStacks){
             if(itemStack != null && itemStack.hasItemMeta()){
                 ItemMeta itemMeta = itemStack.getItemMeta();
-                System.out.println(itemMeta.hasLore());
                 if (itemMeta.hasLore()) {
                     List<String> lore = itemMeta.getLore();
                     lore.remove(Util.LORE_GRENADE_MARKER);
