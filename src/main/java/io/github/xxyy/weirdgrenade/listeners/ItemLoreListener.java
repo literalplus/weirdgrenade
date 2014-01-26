@@ -28,6 +28,7 @@ public class ItemLoreListener implements ItemsListener {
                     List<String> lore = itemMeta.getLore();
                     lore.remove(Util.LORE_GRENADE_MARKER);
                     itemMeta.setLore(lore);
+                    itemStack.setItemMeta(itemMeta);
                 }
                 NbtCompound compound = (NbtCompound) NbtFactory.fromItemTag(itemStack);
                 compound.put(NbtFactory.ofList("ench"));
