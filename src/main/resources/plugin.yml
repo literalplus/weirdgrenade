@@ -3,7 +3,7 @@ version: 1.0
 website: https://github.com/xxyy/weirdgrenade
 description: Allows players to fire weird grenades.
 
-softdepend: [ItemRenamer]
+softdepend: [ProtocolLib, ItemRenamer]
 
 main: io.github.xxyy.weirdgrenade.WeirdGrenadePlugin
 

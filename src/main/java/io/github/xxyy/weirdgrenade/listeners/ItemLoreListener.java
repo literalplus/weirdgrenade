@@ -1,5 +1,7 @@
 package io.github.xxyy.weirdgrenade.listeners;
 
+import com.comphenix.protocol.wrappers.nbt.NbtCompound;
+import com.comphenix.protocol.wrappers.nbt.NbtFactory;
 import io.github.xxyy.weirdgrenade.util.Util;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -21,10 +23,14 @@ public class ItemLoreListener implements ItemsListener {
         for(ItemStack itemStack : itemStacks){
             if(itemStack != null && itemStack.hasItemMeta()){
                 ItemMeta itemMeta = itemStack.getItemMeta();
+                System.out.println(itemMeta.hasLore());
                 if (itemMeta.hasLore()) {
                     List<String> lore = itemMeta.getLore();
                     lore.remove(Util.LORE_GRENADE_MARKER);
+                    itemMeta.setLore(lore);
                 }
+                NbtCompound compound = (NbtCompound) NbtFactory.fromItemTag(itemStack);
+                compound.put(NbtFactory.ofList("ench"));
             }
         }
     }
