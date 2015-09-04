@@ -1,7 +1,7 @@
 weirdgrenade
 ============
 
-A weird plugin which allows players to craft weird grenades an throw them (creating an explosion).
+A weird plugin which allows players to craft weird grenades an throw them (creating an explosion). No longer actively maintained, could still work though. 
 
 Downloading
 ===========
