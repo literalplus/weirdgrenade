@@ -3,10 +3,15 @@ weirdgrenade
 
 A weird plugin which allows players to craft weird grenades an throw them (creating an explosion). No longer actively maintained, could still work though. 
 
-Downloading
+Compilation
 ===========
+````bash
+git clone https://github.com/xxyy/weirdgrenade.git
+cd weirdgrenade
+mvn install
+````
 
-[Get the latest build at my Continous Integration server](http://server.nowak-at.net/jenkins/job/public~weirdgrenade/)
+Artifacts are generated in the `target/` folder.
 
 License
 =======
