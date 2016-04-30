@@ -1,7 +1,7 @@
 weirdgrenade
 ============
 
-A weird plugin which allows players to craft weird grenades an throw them (creating an explosion). No longer actively maintained, could still work though. 
+A weird plugin which allows players to craft weird grenades and throw them (creating an explosion). No longer actively maintained, could still work though. 
 
 Compilation
 ===========
@@ -19,4 +19,4 @@ You can use the source and binaries as long as you credit me and do not make any
 
 Support
 =======
-[Join #lit on irc.spi.gt patiently wait for a reply.](http:/irc.spi.gt/iris/?channels=lit)
+[Join #lit on irc.spi.gt and patiently wait for a reply.](http:/irc.spi.gt/iris/?channels=lit) If there is still no reply after an hour or so, open an issue on GitHub.
